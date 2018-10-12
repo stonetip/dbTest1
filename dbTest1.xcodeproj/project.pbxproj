@@ -12,6 +12,7 @@
 		808954D7216FC075001CD775 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954D5216FC075001CD775 /* Main.storyboard */; };
 		808954D9216FC076001CD775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808954D8216FC076001CD775 /* Assets.xcassets */; };
 		808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954DA216FC076001CD775 /* LaunchScreen.storyboard */; };
+		808954E7216FC53C001CD775 /* dbTest1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 808954E6216FC53C001CD775 /* dbTest1.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		808954D8216FC076001CD775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		808954DB216FC076001CD775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		808954DD216FC076001CD775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		808954E6216FC53C001CD775 /* dbTest1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dbTest1.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		808954D0216FC075001CD775 /* dbTest1 */ = {
 			isa = PBXGroup;
 			children = (
+				808954E3216FC086001CD775 /* data */,
 				808954D1216FC075001CD775 /* AppDelegate.swift */,
 				808954D3216FC075001CD775 /* ViewController.swift */,
 				808954D5216FC075001CD775 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				808954DD216FC076001CD775 /* Info.plist */,
 			);
 			path = dbTest1;
+			sourceTree = "<group>";
+		};
+		808954E3216FC086001CD775 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				808954E6216FC53C001CD775 /* dbTest1.sqlite */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */,
+				808954E7216FC53C001CD775 /* dbTest1.sqlite in Resources */,
 				808954D9216FC076001CD775 /* Assets.xcassets in Resources */,
 				808954D7216FC075001CD775 /* Main.storyboard in Resources */,
 			);
