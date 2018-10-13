@@ -8,8 +8,11 @@
 
 import UIKit
 import SQLite3
+import GRDB
 
 class ViewController: UIViewController {
+    
+    var dbQueue: DatabaseQueue?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +21,55 @@ class ViewController: UIViewController {
         
         copyDatabaseIfNeeded()
         
-        openDatabase()
+        openDB()
+        
+        readValues()
     }
     
-    func deleteDatabase(){
-        // Move database file from bundle to documents folder
+    
+    func openDB(){
         
+        do{
+            let fileManager = FileManager.default
+            
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                in: .userDomainMask)
+            
+            guard documentsUrl.count != 0 else {
+                return
+            }
+            
+            let finalDatabaseURL = documentsUrl.first!.appendingPathComponent("dbTest1.sqlite")
+            
+           dbQueue = try DatabaseQueue(path: finalDatabaseURL.path)
+        }catch let error as NSError{
+            print(error.debugDescription)
+        }
+        
+    }
+    
+    
+    
+    func readValues(){
+        
+        // Read values:
+        do{
+            try dbQueue?.read { db in
+                let locations =  try Row.fetchAll(db, "SELECT * FROM locations")
+                for row in locations{
+//                    let lat  = row["lat"] ?? 0.0
+//                    print(lat)
+                    print(row)
+                }
+            }
+        }catch let error as NSError{
+            print(error.debugDescription)
+        }
+    }
+    
+    
+    // Delete a database from documents (basically for testing/dev purposes
+    func deleteDatabase(){
         let fileManager = FileManager.default
         
         let documentsUrl = fileManager.urls(for: .documentDirectory,
@@ -39,20 +85,21 @@ class ViewController: UIViewController {
             print("DB does not exist in documents folder")
             return
         } else {
-            print("Database file found at path: \(finalDatabaseURL.path)")
+            print("DB file found at path: \(finalDatabaseURL.path)")
             
             do{
-                 try fileManager.removeItem(at: finalDatabaseURL)
+                try fileManager.removeItem(at: finalDatabaseURL)
+                print("DB file was removed.")
             }
             catch let error as NSError{
-                print("Could not remove database: \(error.debugDescription)")
+                print("Could not remove DB: \(error.debugDescription)")
             }
         }
     }
     
+    // Move prototype database file from bundle to documents folder
     func copyDatabaseIfNeeded() {
-        // Move database file from bundle to documents folder
-        
+
         let fileManager = FileManager.default
         
         let documentsUrl = fileManager.urls(for: .documentDirectory,
@@ -71,6 +118,7 @@ class ViewController: UIViewController {
             
             do {
                 try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)
+                print("DB copied over to documents folder")
             } catch let error as NSError {
                 print("Couldn't copy file to final location! Error:\(error.description)")
             }
@@ -79,68 +127,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func openDatabase() {
-        // Move database file from bundle to documents folder
-        
-        let fileManager = FileManager.default
-        
-        let documentsUrl = fileManager.urls(for: .documentDirectory,
-                                            in: .userDomainMask)
-        
-        guard documentsUrl.count != 0 else {
-            return // Could not find documents URL
-        }
-        
-        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent("dbTest1.sqlite")
-        
-        if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
-            print("DB does not exist in documents folder")
-            
-        } else {
-            print("Database file found at path: \(finalDatabaseURL.path)")
-            
-            var db: OpaquePointer?
-            
-            if sqlite3_open(finalDatabaseURL.path, &db) != SQLITE_OK{
-                print("error opening database")
-                return
-            }
-            
-            readLocations(db: db!)
-            
-            addLocation(db: db!)
-            
-            readLocations(db: db!)
-            
-            removeLocations(db: db!)
-            
-            readLocations(db: db!)
-        }
-    }
     
-    
-    func readLocations(db: OpaquePointer)
-    {
-        let queryStr = "SELECT * FROM locations"
-        
-        var stmt:OpaquePointer?
-        
-        if sqlite3_prepare(db, queryStr, -1, &stmt, nil) != SQLITE_OK{
-            let errMsg = String(cString: sqlite3_errmsg(db)!)
-            print("error reading : \(errMsg)")
-            return
-        }
-        
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            
-            let tid = sqlite3_column_int(stmt, 0)
-            let lat = sqlite3_column_double(stmt, 1)
-            let lon = sqlite3_column_double(stmt, 2)
-            print(tid, lat, lon)
-        }
-        
-        print("_______")
-    }
     
     
     func addLocation(db: OpaquePointer)
