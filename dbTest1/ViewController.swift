@@ -15,12 +15,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Seeded table:")
         readValues()
         
         addLoc(for: 3)
+         print("After record added:")
+        readValues()
         
         removeLocs(for: 2)
-        
+         print("After track and foreign-key related locations deleted:")
         readValues()
     }
     
@@ -61,7 +64,7 @@ class ViewController: UIViewController {
     {
         do{
             try dbQueue?.write{db in
-                try db.execute("DELETE FROM locations WHERE tid = ?", arguments: [tid])
+                try db.execute("DELETE FROM tracks WHERE tid = ?", arguments: [tid])
             }
         }catch let error as NSError {
             print("Couldn't delete record(s)! Error:\(error.description)")
