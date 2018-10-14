@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import GRDB
+
+var dbQueue: DatabaseQueue!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        try! setupDatabase(application)
+        
         return true
     }
 
@@ -42,5 +47,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    private func setupDatabase(_ application: UIApplication) throws {
+        
+        let testDBName = "dbTest1.sqlite"
+        
+        // These two calls are made to ensure starting with a fresh copy of the DB
+        AppDatabase.deleteDatabase(dbName: testDBName)
+        AppDatabase.copyDatabaseIfNeeded(dbName: testDBName)
+        
+        let databaseURL = try FileManager.default
+            .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            .appendingPathComponent(testDBName)
+        dbQueue = try AppDatabase.openDatabase(atPath: databaseURL.path)
+        
+        // Be a nice iOS citizen, and don't consume too much memory
+        // See https://github.com/groue/GRDB.swift/#memory-management
+        dbQueue.setupMemoryManagement(in: application)
+    }
+    
 }
 

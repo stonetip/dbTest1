@@ -14,6 +14,7 @@
 		808954D9216FC076001CD775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808954D8216FC076001CD775 /* Assets.xcassets */; };
 		808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954DA216FC076001CD775 /* LaunchScreen.storyboard */; };
 		808954E7216FC53C001CD775 /* dbTest1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 808954E6216FC53C001CD775 /* dbTest1.sqlite */; };
+		808954E92173E27A001CD775 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954E82173E27A001CD775 /* AppDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		808954DB216FC076001CD775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		808954DD216FC076001CD775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		808954E6216FC53C001CD775 /* dbTest1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dbTest1.sqlite; sourceTree = "<group>"; };
+		808954E82173E27A001CD775 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				808954E3216FC086001CD775 /* data */,
 				808954D1216FC075001CD775 /* AppDelegate.swift */,
+				808954E82173E27A001CD775 /* AppDatabase.swift */,
 				808954D3216FC075001CD775 /* ViewController.swift */,
 				808954D5216FC075001CD775 /* Main.storyboard */,
 				808954D8216FC076001CD775 /* Assets.xcassets */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				808954E92173E27A001CD775 /* AppDatabase.swift in Sources */,
 				808954D4216FC075001CD775 /* ViewController.swift in Sources */,
 				808954D2216FC075001CD775 /* AppDelegate.swift in Sources */,
 			);
