@@ -18,8 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        try! setupDatabase(application)
+
+        do{
+             try setupDatabase(application)
+        }
+        catch let error as NSError{
+            print("Unable to setup DB: \(error.debugDescription)")
+        }
         
         return true
     }
