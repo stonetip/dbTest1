@@ -15,7 +15,7 @@
 		808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954DA216FC076001CD775 /* LaunchScreen.storyboard */; };
 		808954E7216FC53C001CD775 /* dbTest1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 808954E6216FC53C001CD775 /* dbTest1.sqlite */; };
 		808954E92173E27A001CD775 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954E82173E27A001CD775 /* AppDatabase.swift */; };
-		808954EB2174E1C1001CD775 /* tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954EA2174E1C1001CD775 /* tracks.swift */; };
+		808954EB2174E1C1001CD775 /* tracksLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954EA2174E1C1001CD775 /* tracksLocations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		808954DD216FC076001CD775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		808954E6216FC53C001CD775 /* dbTest1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dbTest1.sqlite; sourceTree = "<group>"; };
 		808954E82173E27A001CD775 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		808954EA2174E1C1001CD775 /* tracks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tracks.swift; sourceTree = "<group>"; };
+		808954EA2174E1C1001CD775 /* tracksLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tracksLocations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,7 @@
 				808954D8216FC076001CD775 /* Assets.xcassets */,
 				808954DA216FC076001CD775 /* LaunchScreen.storyboard */,
 				808954DD216FC076001CD775 /* Info.plist */,
-				808954EA2174E1C1001CD775 /* tracks.swift */,
+				808954EA2174E1C1001CD775 /* tracksLocations.swift */,
 			);
 			path = dbTest1;
 			sourceTree = "<group>";
@@ -221,7 +221,7 @@
 				808954E92173E27A001CD775 /* AppDatabase.swift in Sources */,
 				808954D4216FC075001CD775 /* ViewController.swift in Sources */,
 				808954D2216FC075001CD775 /* AppDelegate.swift in Sources */,
-				808954EB2174E1C1001CD775 /* tracks.swift in Sources */,
+				808954EB2174E1C1001CD775 /* tracksLocations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

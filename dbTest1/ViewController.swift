@@ -22,15 +22,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         print("Seeded table:")
-        readValues()
+        readLocationsValues()
         
         addLoc(for: 3)
         print("After record added:")
-        readValues()
+        readLocationsValues()
         
         removeLocs(for: 2)
         print("After track and foreign-key related locations deleted:")
-        readValues()
+        readLocationsValues()
         
         do{
             try dbQueue.inDatabase{db in
@@ -51,11 +51,37 @@ class ViewController: UIViewController {
             print(error.debugDescription)
         }
         
-        readValues()
+        readLocationsValues()
+        
+        
+        do{
+            try dbQueue.inDatabase{db in
+                
+            var newTrack = Tracks(tid: nil,
+                                  uuid: UUID().uuidString.lowercased(),
+                                  name: "Test Track 4",
+                                  dateCreated: Date(),
+                                  dateModified: Date(),
+                                  currentTrack: false,
+                                  uploaded: false,
+                                  notes: "Just another track")
+
+                try newTrack.insert(db)
+                
+                let trackCheck = try Tracks.fetchAll(db)
+                for track in trackCheck{
+                    print(track)
+                }
+        
+            }
+        }catch let error as NSError{
+            print(error.debugDescription)
+        }
+        
     }
     
     
-    func readValues(){
+    func readLocationsValues(){
         
         // Read values:
         do{
@@ -97,11 +123,7 @@ class ViewController: UIViewController {
             print("Couldn't delete record(s)! Error:\(error.description)")
         }
     }
-    
-    
-    
-    
-    
-    
 }
+
+
 
