@@ -8,8 +8,14 @@
 
 import UIKit
 import GRDB
+import CoreLocation
 
 class ViewController: UIViewController {
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -19,11 +25,32 @@ class ViewController: UIViewController {
         readValues()
         
         addLoc(for: 3)
-         print("After record added:")
+        print("After record added:")
         readValues()
         
         removeLocs(for: 2)
-         print("After track and foreign-key related locations deleted:")
+        print("After track and foreign-key related locations deleted:")
+        readValues()
+        
+        do{
+            try dbQueue.inDatabase{db in
+                
+                var foo = Locations(tid: 3,
+                                    location: CLLocation(coordinate: CLLocationCoordinate2DMake(46, -112),
+                                                         altitude: 1234,
+                                                         horizontalAccuracy: 10,
+                                                         verticalAccuracy: 15,
+                                                         course: 32.54321,
+                                                         speed: 1.7,
+                                                         timestamp: Date())
+                                    )
+                
+                try foo.insert(db)
+            }
+        }catch let error as NSError{
+            print(error.debugDescription)
+        }
+        
         readValues()
     }
     
@@ -70,5 +97,11 @@ class ViewController: UIViewController {
             print("Couldn't delete record(s)! Error:\(error.description)")
         }
     }
+    
+    
+    
+    
+    
+    
 }
 
