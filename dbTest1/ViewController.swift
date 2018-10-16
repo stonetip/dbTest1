@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         
         readLocationsValues()
         
-        
+        // Testing a track insert and update
         do{
             try dbQueue.inDatabase{db in
                 
@@ -67,6 +67,10 @@ class ViewController: UIViewController {
                                   notes: "Just another track")
 
                 try newTrack.insert(db)
+                
+                newTrack.notes = "No, this is not just another track!"
+                newTrack.currentTrack = true
+                try newTrack.update(db)
                 
                 let trackCheck = try Tracks.fetchAll(db)
                 for track in trackCheck{
