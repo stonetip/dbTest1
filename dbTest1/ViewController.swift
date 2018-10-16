@@ -43,7 +43,7 @@ class ViewController: UIViewController {
                                                          course: 32.54321,
                                                          speed: 1.7,
                                                          timestamp: Date())
-                                    )
+                )
                 
                 try foo.insert(db)
             }
@@ -53,35 +53,54 @@ class ViewController: UIViewController {
         
         readLocationsValues()
         
-        // Testing a track insert and update
+        // Testing a track insert
         do{
             try dbQueue.inDatabase{db in
                 
-            var newTrack = Tracks(tid: nil,
-                                  uuid: UUID().uuidString.lowercased(),
-                                  name: "Test Track 4",
-                                  dateCreated: Date(),
-                                  dateModified: Date(),
-                                  currentTrack: false,
-                                  uploaded: false,
-                                  notes: "Just another track")
-
+                var newTrack = Tracks(tid: nil,
+                                      uuid: UUID().uuidString.lowercased(),
+                                      name: "Test Track 4",
+                                      dateCreated: Date(),
+                                      dateModified: Date(),
+                                      currentTrack: false,
+                                      uploaded: false,
+                                      notes: "Just another track")
+                
                 try newTrack.insert(db)
                 
-                newTrack.notes = "No, this is not just another track!"
-                newTrack.currentTrack = true
-                try newTrack.update(db)
                 
                 let trackCheck = try Tracks.fetchAll(db)
                 for track in trackCheck{
                     print(track)
                 }
-        
+                
+                print("***********************")
             }
         }catch let error as NSError{
             print(error.debugDescription)
         }
         
+        // Testing a track update
+        do{
+            try dbQueue.inDatabase{db in
+                
+                if var latestTrack = try Tracks.fetchOne(db, key: 4)
+                {
+                    latestTrack.notes = "No, this is not just another track!"
+                    latestTrack.currentTrack = true
+                    try latestTrack.update(db)
+                }
+                
+                let trackCheck = try Tracks.fetchAll(db)
+                for track in trackCheck{
+                    print(track)
+                }
+                
+                print("***********************")
+            }
+        }catch let error as NSError{
+            print(error.debugDescription)
+        }
     }
     
     
