@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         do{
             try dbQueue.inDatabase{db in
                 
-                var foo = Locations(tid: 3,
+                var newLocation = Locations(lid: 0, tid: 3,
                                     location: CLLocation(coordinate: CLLocationCoordinate2DMake(46, -112),
                                                          altitude: 1234,
                                                          horizontalAccuracy: 10,
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
                                                          timestamp: Date())
                 )
                 
-                try foo.insert(db)
+                try newLocation.insert(db)
             }
         }catch let error as NSError{
             print(error.debugDescription)
@@ -63,8 +63,7 @@ class ViewController: UIViewController {
                                       dateCreated: Date(),
                                       dateModified: Date(),
                                       currentTrack: false,
-                                      uploaded: false,
-                                      notes: "Just another track")
+                                      uploaded: false)
                 
                 try newTrack.insert(db)
                 
@@ -86,7 +85,6 @@ class ViewController: UIViewController {
                 
                 if var latestTrack = try Tracks.fetchOne(db, key: 4)
                 {
-                    latestTrack.notes = "No, this is not just another track!"
                     latestTrack.currentTrack = true
                     try latestTrack.update(db)
                 }
@@ -123,25 +121,32 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    // NOTE: This is more the old-school raw SQL way of doing things
     func addLoc(for tid: Int)
     {
         do{
-            try dbQueue?.write{db in
-                try db.execute("INSERT INTO locations VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", arguments: [tid, 46.123456, -112.654321, 1234.0, 5.0, 5.0, 1.0, 10.0, Date()])
+            try dbQueue.write{db in
+                try db.execute("INSERT INTO locations VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", arguments: [nil, tid, 46.123456, -112.654321, 1234.0, 5.0, 5.0, 1.0, 10.0, Date()])
             }
         }catch let error as NSError {
             print("Couldn't insert record! Error:\(error.description)")
         }
     }
     
-    
+    // NOTE: This is an example of either using raw SQL or alternately the row ID
     func removeLocs(for tid: Int)
     {
         do{
-            try dbQueue?.write{db in
-                try db.execute("DELETE FROM tracks WHERE tid = ?", arguments: [tid])
+//            try dbQueue?.write{db in
+//               try db.execute("DELETE FROM tracks WHERE tid = ?", arguments: [tid])
+//            }
+            let deleteOp = try dbQueue.write{db in
+                
+                try Tracks.deleteOne(db, key: tid)
             }
+            print("+++++++++++++++++++++++++++")
+            print(deleteOp)
+            
         }catch let error as NSError {
             print("Couldn't delete record(s)! Error:\(error.description)")
         }

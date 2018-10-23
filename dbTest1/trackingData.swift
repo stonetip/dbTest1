@@ -2,13 +2,14 @@ import CoreLocation
 import GRDB
 
 struct Locations {
-    
+    var lid: Int64?
     var tid: Int64
     var location: CLLocation
 }
 
 extension Locations: FetchableRecord{
     init(row: Row) {
+        lid = row["lid"]
         tid = row["tid"]
         location = CLLocation(coordinate: CLLocationCoordinate2DMake(row["lat"], row["lon"]),
                               altitude: row["altitude"],
@@ -22,6 +23,7 @@ extension Locations: FetchableRecord{
 
 extension Locations: MutablePersistableRecord{
     func encode(to container: inout PersistenceContainer) {
+        container["lid"] = lid
         container["tid"] = tid
         container["lat"] = location.coordinate.latitude
         container["lon"] = location.coordinate.longitude
@@ -31,6 +33,10 @@ extension Locations: MutablePersistableRecord{
         container["course"] = location.course
         container["speed"] = location.speed
         container["timeStamp"] = location.timestamp
+    }
+    
+    mutating func didInsert(with rowID: Int64, for column: String?) {
+        lid = rowID
     }
 }
 
@@ -46,7 +52,6 @@ struct Tracks{
     var dateModified: Date?
     var currentTrack: Bool
     var uploaded: Bool
-    var notes: String?
 }
 
 extension Tracks: FetchableRecord{
@@ -58,7 +63,6 @@ extension Tracks: FetchableRecord{
         dateModified = row["dateModified"]
         currentTrack = row["currentTrack"]
         uploaded = row["uploaded"]
-        notes = row["notes"]
     }
 }
 
@@ -71,10 +75,41 @@ extension Tracks: MutablePersistableRecord{
         container["dateModified"] = dateModified
         container["currentTrack"] = currentTrack
         container["uploaded"] = uploaded
-        container["notes"] = notes
     }
     
     mutating func didInsert(with rowID: Int64, for column: String?) {
         tid = rowID
     }
 }
+
+
+/* NOTES code */
+
+struct Notes{
+    
+    var note: String
+    var tid: Int64?
+    var lid: Int64?
+    var timeStamp: Date
+}
+
+extension Notes: FetchableRecord{
+    
+    init(row: Row) {
+        note = row["note"]
+        tid = row["tid"]
+        lid = row["lid"]
+        timeStamp = row["timeStamp"]
+    }
+}
+
+extension Notes: MutablePersistableRecord{
+    
+    func encode(to container: inout PersistenceContainer) {
+        container["note"] = note
+        container["tid"] = tid
+        container["lid"] = lid
+        container["timeStamp"] = timeStamp
+    }
+}
+

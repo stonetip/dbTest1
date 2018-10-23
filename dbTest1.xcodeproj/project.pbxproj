@@ -8,21 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		405AB9BCE0EF5ACA4B8F88CB /* Pods_dbTest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F9CBE29C71095C7094CEE3 /* Pods_dbTest1.framework */; };
-		807650AA21753B49000E9F53 /* dbTest1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 807650A921753B49000E9F53 /* dbTest1.sqlite */; };
 		808954D2216FC075001CD775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954D1216FC075001CD775 /* AppDelegate.swift */; };
 		808954D4216FC075001CD775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954D3216FC075001CD775 /* ViewController.swift */; };
 		808954D7216FC075001CD775 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954D5216FC075001CD775 /* Main.storyboard */; };
 		808954D9216FC076001CD775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808954D8216FC076001CD775 /* Assets.xcassets */; };
 		808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954DA216FC076001CD775 /* LaunchScreen.storyboard */; };
 		808954E92173E27A001CD775 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954E82173E27A001CD775 /* AppDatabase.swift */; };
-		808954EB2174E1C1001CD775 /* tracksLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954EA2174E1C1001CD775 /* tracksLocations.swift */; };
+		808954EB2174E1C1001CD775 /* trackingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954EA2174E1C1001CD775 /* trackingData.swift */; };
+		80CF6D58217F688D002BF1FE /* userSpatialData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		377D4C7D2144112912E61042 /* Pods-dbTest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dbTest1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dbTest1/Pods-dbTest1.debug.xcconfig"; sourceTree = "<group>"; };
 		50F9CBE29C71095C7094CEE3 /* Pods_dbTest1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dbTest1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F29C155CA717E3546FF185 /* Pods-dbTest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dbTest1.release.xcconfig"; path = "Pods/Target Support Files/Pods-dbTest1/Pods-dbTest1.release.xcconfig"; sourceTree = "<group>"; };
-		807650A921753B49000E9F53 /* dbTest1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = dbTest1.sqlite; path = dbTest1/dbTest1.sqlite; sourceTree = SOURCE_ROOT; };
 		808954CE216FC075001CD775 /* dbTest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dbTest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		808954D1216FC075001CD775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		808954D3216FC075001CD775 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,7 +30,8 @@
 		808954DB216FC076001CD775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		808954DD216FC076001CD775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		808954E82173E27A001CD775 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		808954EA2174E1C1001CD775 /* tracksLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tracksLocations.swift; sourceTree = "<group>"; };
+		808954EA2174E1C1001CD775 /* trackingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trackingData.swift; sourceTree = "<group>"; };
+		80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = userSpatialData.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,14 +52,6 @@
 				50F9CBE29C71095C7094CEE3 /* Pods_dbTest1.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		807650A821753B37000E9F53 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				807650A921753B49000E9F53 /* dbTest1.sqlite */,
-			);
-			path = data;
 			sourceTree = "<group>";
 		};
 		808954C5216FC075001CD775 = {
@@ -83,7 +75,7 @@
 		808954D0216FC075001CD775 /* dbTest1 */ = {
 			isa = PBXGroup;
 			children = (
-				807650A821753B37000E9F53 /* data */,
+				80CF6D56217F688D002BF1FE /* data */,
 				808954D1216FC075001CD775 /* AppDelegate.swift */,
 				808954E82173E27A001CD775 /* AppDatabase.swift */,
 				808954D3216FC075001CD775 /* ViewController.swift */,
@@ -91,9 +83,17 @@
 				808954D8216FC076001CD775 /* Assets.xcassets */,
 				808954DA216FC076001CD775 /* LaunchScreen.storyboard */,
 				808954DD216FC076001CD775 /* Info.plist */,
-				808954EA2174E1C1001CD775 /* tracksLocations.swift */,
+				808954EA2174E1C1001CD775 /* trackingData.swift */,
 			);
 			path = dbTest1;
+			sourceTree = "<group>";
+		};
+		80CF6D56217F688D002BF1FE /* data */ = {
+			isa = PBXGroup;
+			children = (
+				80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		BB72F448D8E3F0B08D4BC70D /* Pods */ = {
@@ -166,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */,
-				807650AA21753B49000E9F53 /* dbTest1.sqlite in Resources */,
+				80CF6D58217F688D002BF1FE /* userSpatialData.sqlite in Resources */,
 				808954D9216FC076001CD775 /* Assets.xcassets in Resources */,
 				808954D7216FC075001CD775 /* Main.storyboard in Resources */,
 			);
@@ -221,7 +221,7 @@
 				808954E92173E27A001CD775 /* AppDatabase.swift in Sources */,
 				808954D4216FC075001CD775 /* ViewController.swift in Sources */,
 				808954D2216FC075001CD775 /* AppDelegate.swift in Sources */,
-				808954EB2174E1C1001CD775 /* tracksLocations.swift in Sources */,
+				808954EB2174E1C1001CD775 /* trackingData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
