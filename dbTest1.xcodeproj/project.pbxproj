@@ -16,6 +16,7 @@
 		808954E92173E27A001CD775 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954E82173E27A001CD775 /* AppDatabase.swift */; };
 		80CF6D58217F688D002BF1FE /* userSpatialData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */; };
 		80CF6D5A217F7517002BF1FE /* trackingDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF6D59217F7517002BF1FE /* trackingDataModels.swift */; };
+		80CF6D5C217FABA3002BF1FE /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF6D5B217FABA3002BF1FE /* LocationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		808954E82173E27A001CD775 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = userSpatialData.sqlite; sourceTree = "<group>"; };
 		80CF6D59217F7517002BF1FE /* trackingDataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trackingDataModels.swift; sourceTree = "<group>"; };
+		80CF6D5B217FABA3002BF1FE /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				808954E82173E27A001CD775 /* AppDatabase.swift */,
 				808954D3216FC075001CD775 /* ViewController.swift */,
 				808954D5216FC075001CD775 /* Main.storyboard */,
+				80CF6D5B217FABA3002BF1FE /* LocationCell.swift */,
 				808954D8216FC076001CD775 /* Assets.xcassets */,
 				808954DA216FC076001CD775 /* LaunchScreen.storyboard */,
 				808954DD216FC076001CD775 /* Info.plist */,
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CF6D5C217FABA3002BF1FE /* LocationCell.swift in Sources */,
 				80CF6D5A217F7517002BF1FE /* trackingDataModels.swift in Sources */,
 				808954E92173E27A001CD775 /* AppDatabase.swift in Sources */,
 				808954D4216FC075001CD775 /* ViewController.swift in Sources */,

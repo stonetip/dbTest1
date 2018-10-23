@@ -13,13 +13,28 @@ import CoreLocation
 class ViewController: UIViewController {
     
     
+    @IBOutlet weak var locationsTableView: UITableView!
     
+    let dataSource: LocationsDataSource
     
-    
-    
+    required init?(coder aDecoder: NSCoder){
+        
+        let locations = [LocationVals(lid: 4, tid: 7, lat: 46.0, lon: -112.0, alt: 1234.0, horizAccuracy: 10.0, vertAccuracy: 5.0, speed: 1.2, course: 301.2, timeStamp: "2018-10-23 18:08:29.043"),
+                         LocationVals(lid: 5, tid: 7, lat: 46.1, lon: -112.2, alt: 1259.0, horizAccuracy: 10.0, vertAccuracy: 5.0, speed: 1.1, course: 278.8, timeStamp: "2018-10-23 24:18:29.043")]
+        self.dataSource = LocationsDataSource(locations: locations)
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        locationsTableView.estimatedRowHeight = 32
+        locationsTableView.rowHeight = UITableView.automaticDimension
+        locationsTableView.dataSource = dataSource
+        locationsTableView.reloadData()
+        
+        
         
         print("Seeded table:")
         readLocationsValues()
