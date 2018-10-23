@@ -14,7 +14,6 @@
 		808954D9216FC076001CD775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 808954D8216FC076001CD775 /* Assets.xcassets */; };
 		808954DC216FC076001CD775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808954DA216FC076001CD775 /* LaunchScreen.storyboard */; };
 		808954E92173E27A001CD775 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954E82173E27A001CD775 /* AppDatabase.swift */; };
-		808954EB2174E1C1001CD775 /* trackingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808954EA2174E1C1001CD775 /* trackingData.swift */; };
 		80CF6D58217F688D002BF1FE /* userSpatialData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		808954DB216FC076001CD775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		808954DD216FC076001CD775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		808954E82173E27A001CD775 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		808954EA2174E1C1001CD775 /* trackingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trackingData.swift; sourceTree = "<group>"; };
 		80CF6D57217F688D002BF1FE /* userSpatialData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = userSpatialData.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +81,6 @@
 				808954D8216FC076001CD775 /* Assets.xcassets */,
 				808954DA216FC076001CD775 /* LaunchScreen.storyboard */,
 				808954DD216FC076001CD775 /* Info.plist */,
-				808954EA2174E1C1001CD775 /* trackingData.swift */,
 			);
 			path = dbTest1;
 			sourceTree = "<group>";
@@ -221,7 +218,6 @@
 				808954E92173E27A001CD775 /* AppDatabase.swift in Sources */,
 				808954D4216FC075001CD775 /* ViewController.swift in Sources */,
 				808954D2216FC075001CD775 /* AppDelegate.swift in Sources */,
-				808954EB2174E1C1001CD775 /* trackingData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
