@@ -82,47 +82,44 @@ class LocationCell: UITableViewCell{
     }
 }
 
-struct LocationVals{
-    let lid: Int64
-    let tid: Int64
-    let lat: Double
-    let lon: Double
-    let alt: Double
-    let horizAccuracy: Double
-    let vertAccuracy: Double
-    let speed: Double
-    let course: Double
-    let timeStamp: String
-}
+
 
 class LocationsDataSource: NSObject{
     
-    let locations: [LocationVals]
-    
-    init(locations: [LocationVals]){
-        self.locations = locations
+    let locs: [Locations]
+    init(locs: [Locations]){
+        self.locs = locs
     }
 }
 
 extension LocationsDataSource: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return locs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LocationCell.self)) as! LocationCell
-        let location = locations[indexPath.row]
-        cell.lid = location.lid
-        cell.tid = location.tid
-        cell.lat = location.lat
-        cell.lon = location.lon
-        cell.alt = location.alt
-        cell.horizAccuracy = location.horizAccuracy
-        cell.vertAccuracy = location.vertAccuracy
-        cell.speed = location.speed
-        cell.course = location.course
-        cell.timeStamp = location.timeStamp
+        let loc = locs[indexPath.row]
+        
+        cell.lid = loc.lid ?? 0
+        cell.tid = loc.tid
+        cell.lat = loc.location.coordinate.latitude
+        cell.lon = loc.location.coordinate.longitude
+        cell.alt = loc.location.altitude
+        cell.horizAccuracy = loc.location.horizontalAccuracy
+        cell.vertAccuracy = loc.location.verticalAccuracy
+        cell.speed = loc.location.speed
+        cell.course = loc.location.course
+        cell.timeStamp = Formatter.iso8601.string(from: loc.location.timestamp)
         
         return cell
     }
+}
+
+extension Formatter {
+    static let iso8601: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withFractionalSeconds, .withInternetDateTime, .withSpaceBetweenDateAndTime]
+        return formatter
+    }()
 }
